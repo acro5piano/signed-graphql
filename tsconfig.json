@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "experimentalDecorators": false,
+    "outDir": "dist",
+    "strict": true,
+    "noUnusedLocals": true,
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "dom",
+      "es2015",
+      "esnext.asynciterable"
+    ],
+    "baseUrl": "."
+  },
+  "parcelTsPluginOptions": {
+    "transpileOnly": true
+  }
+}
