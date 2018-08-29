@@ -1,16 +1,48 @@
 # graphql-encrypt
 
-create prebuild encrypted GraphQL
+Create prebuild encrypted GraphQL.
+
+# Install
+
+```
+npm install --save-dev graphql-encrypt
+```
+
+or if you use yarn:
+
+```
+yarn add -D graphql-encrypt
+```
 
 # Usage
 
-```
-$ node
+Assume `example-query.js` looks like this:
 
-> queries = require('./dist/example-query')
-{ getUsers: '\n  query getUsers {\n    name\n    email\n  }\n' }
-
-> require('./dist').dump('secret', 'production')(queries)
-[ { getUsers:
-     'eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.oqyeTL2Mpu59XLS-7FWDdSCHUGwZdfSmu_TkNgXQ54I' } ]
+```js
+export const getUsers = gql`
+  query getUsers {
+    name
+    email
+  }
+`
 ```
+
+Run the following command to encrypt the gql:
+
+```
+$ npm run graphql-encrypt --secret foo example-query.js
+
+export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.rANjKL1ijf3wHe91w4giPTn5PFSYLXnXzNzbg5Szt7U`;
+```
+
+to overwrite the file, add `--write` option:
+
+```
+$ npm run graphql-encrypt --secret foo --write example-query.js
+```
+
+# TODO
+
+- [ ] add unit test
+- [ ] show console help
+- [ ] decrypt for convenience
