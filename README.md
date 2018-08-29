@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/graphql-encrypt.svg)](https://badge.fury.io/js/graphql-encrypt.svg)
+
 # graphql-encrypt
 
 A cli tool to make GraphQL encrypted.
