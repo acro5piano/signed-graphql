@@ -14,18 +14,15 @@
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "@types/babel-core": "^6.25.5",
     "jsonwebtoken": "^8.3.0",
     "optimist": "^0.6.1"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^7.2.8",
-    "@types/node": "^10.7.0",
+    "babel-plugin-tester": "^5.5.1",
     "jest": "^23.5.0",
     "prettier": "^1.14.2",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^7.1.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.0.1"
+    "tslint-eslint-rules": "^5.4.0"
   }
 }
