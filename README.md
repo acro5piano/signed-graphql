@@ -1,6 +1,12 @@
 # graphql-encrypt
 
-Create prebuild encrypted GraphQL.
+A cli tool to make GraphQL encrypted.
+
+# Why
+
+GraphQL is a great tool, but the query is open to public by default. Of course, we should set GraphQL server secure by server-side logic. However, we may not confortable if someone find a security hole and query it.
+
+With Graphql Encrypt, we can hide our query completely, and accept only signed queries.
 
 # Install
 
@@ -32,13 +38,31 @@ Run the following command to encrypt the gql:
 ```
 $ npm run graphql-encrypt --secret foo example-query.js
 
-export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.rANjKL1ijf3wHe91w4giPTn5PFSYLXnXzNzbg5Szt7U`;
+export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.GRFoVNHpY12mX0UI1y_nCRwGqKST4UkAbx88hZ2Jccg`;
 ```
 
 to overwrite the file, add `--write` option:
 
 ```
 $ npm run graphql-encrypt --secret foo --write example-query.js
+```
+
+Note: `--secret` is required args. Please keep it secret.
+
+# Next Step
+
+On the server side, decrypt the query. Node.js example:
+
+```js
+const { verify } = require('jsonwebtoken')
+
+// assuming
+// req.body.query = 'eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.GRFoVNHpY12mX0UI1y_nCRwGqKST4UkAbx88hZ2Jccg'
+
+app.post('/graphql', (req, res) => {
+  const query = verify(req.body.query, 'foo')
+  // => '\n  query getUsers {\n    name\n    email\n  }\n'
+})
 ```
 
 # TODO
