@@ -3,16 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "license": "MIT",
+  "bin": {
+    "graphql-encrypt": "bin/graphql-encrypt.js"
+  },
   "scripts": {
     "start": "tsc -w",
     "test": "jest",
     "build": "tsc"
   },
-  "bin": {
-    "graphql-encrypt": "index.js"
-  },
   "dependencies": {
-    "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "jsonwebtoken": "^8.3.0",
     "optimist": "^0.6.1"

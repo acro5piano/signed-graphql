@@ -2,7 +2,7 @@
 
 create prebuild encrypted GraphQL
 
-# Demo
+# Usage
 
 ```
 $ node
