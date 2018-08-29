@@ -1,13 +1,22 @@
 {
+  "name": "graphql-encrypt",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
   "scripts": {
     "start": "tsc -w",
     "test": "jest",
     "build": "tsc"
   },
+  "bin": {
+    "graphql-encrypt": "index.js"
+  },
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "jsonwebtoken": "^8.3.0"
+    "@types/babel-core": "^6.25.5",
+    "jsonwebtoken": "^8.3.0",
+    "optimist": "^0.6.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^7.2.8",
