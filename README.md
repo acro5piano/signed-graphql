@@ -40,7 +40,7 @@ Run the following command to encrypt the gql:
 ```
 $ npm run graphql-encrypt --secret foo example-query.js
 
-export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.GRFoVNHpY12mX0UI1y_nCRwGqKST4UkAbx88hZ2Jccg`;
+export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.GRFoVNHpY12mX0UI1y_nCRwGqKST4UkAbx88hZ2Jccg`
 ```
 
 to overwrite the file, add `--write` option:
@@ -66,6 +66,10 @@ app.post('/graphql', (req, res) => {
   // => '\n  query getUsers {\n    name\n    email\n  }\n'
 })
 ```
+
+# Thanks
+
+Oridinally inspired by: https://itnext.io/graphql-data-hiding-using-apollo-stack-ad1ea92fa85c
 
 # TODO
 
