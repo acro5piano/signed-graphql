@@ -4,6 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "graphql-encrypt": "^0.0.1"
+    "graphql-encrypt": "*"
   }
 }
