@@ -7,9 +7,7 @@
     "graphql-encrypt": "bin/graphql-encrypt.js"
   },
   "scripts": {
-    "start": "tsc -w",
-    "test": "jest",
-    "build": "tsc"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
