@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/graphql-encrypt.svg)](https://badge.fury.io/js/graphql-encrypt.svg)
 
-# graphql-encrypt
+# signed-graphql
 
 A cli tool to make GraphQL encrypted.
 
@@ -8,18 +8,18 @@ A cli tool to make GraphQL encrypted.
 
 GraphQL is a great tool, but the query is open to public by default. Of course, we should set GraphQL server secure by server-side logic. However, we may not confortable if someone find a security hole and query it.
 
-With Graphql Encrypt, we can hide our query completely, and accept only signed queries.
+With signed-graphql, we can verify that our queries is made by specific people, and accept only signed queries.
 
 # Install
 
 ```
-npm install --save-dev graphql-encrypt
+npm install --save-dev signed-graphql
 ```
 
 or if you use yarn:
 
 ```
-yarn add -D graphql-encrypt
+yarn add -D signed-graphql
 ```
 
 # Usage
@@ -35,7 +35,7 @@ export const getUsers = gql`
 `
 ```
 
-Run the following command to encrypt the gql:
+Run the following command to sign the gql:
 
 ```
 $ npm run graphql-encrypt --secret foo example-query.js
