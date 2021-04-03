@@ -6,9 +6,9 @@ A cli tool to make GraphQL secure. Make plain query into JWT signed query.
 
 # Why
 
-GraphQL is a great tool, but the query is open to public by default. Of course, we should set GraphQL server secure by server-side logic. However, we may not confortable if someone find a security hole and query it.
+GraphQL is a great tool, but the schema is open to public by default. Of course, we should set our GraphQL server secure by server-side logic. However, it is possible to create a security hole on GraphQL server and results in unexpected issues.
 
-With signed-graphql, we can verify that our queries is made by specific people, and accept only signed queries.
+With signed-graphql, we can verify queries are signed using shared JWT secret on runtime.
 
 # Install
 
@@ -45,11 +45,18 @@ Note: do not use `graphql-tag`. Please use plain String.
 
 Run the following command to sign the graphql queries:
 
-```
+```sh
 npm run signed-graphql --write --secret foo example-query.js
 ```
 
 Note: `--secret` is required args. Please keep it secret.
+
+Once you overrite your queries, you can bundle your code as usual. So the whole build step should be like this:
+
+```sh
+npm run signed-graphql --write --secret foo src/**/*.js
+npm run webpack
+```
 
 ### Step 3. Verify your queries on runtime
 
@@ -63,7 +70,7 @@ const { verify } = require('jsonwebtoken')
 
 app.post('/graphql', (req, res) => {
   const query = verify(req.body.query, 'foo')
-  // => '\n  query getUsers {\n    name\n    email\n  }\n'
+  // => '\n  query getUsers {\n    id\n    name\n  }\n'
 })
 ```
 
@@ -77,7 +84,7 @@ On the other hand, signed-graphql keeps flexibility of front-end and server-side
 
 The downside of signed-graphql is performance. You need to verify JWT on every request, which means there is some additional cost on the runtime.
 
-Referenece:
+Refereneces:
 
 - https://mercurius.dev/#/docs/persisted-queries
 - https://www.apollographql.com/docs/apollo-server/performance/apq/
