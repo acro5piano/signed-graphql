@@ -1,10 +1,10 @@
 {
   "name": "signed-graphql",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "",
   "license": "MIT",
   "bin": {
-    "graphql-encrypt": "bin/graphql-encrypt.js"
+    "signed-graphql": "bin/signed-graphql.js"
   },
   "scripts": {
     "test": "jest"

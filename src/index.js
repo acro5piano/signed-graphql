@@ -21,8 +21,8 @@ exports.run = argv => {
   ).then(() => {
     files.forEach(file => {
       fs.readFile(file, 'utf8', (err, content) => {
-        const { code } = transformAsync(content, {
-          plugins: [path.resolve(__dirname, './bebel-plugin-encrypt-graphql.js')],
+        transformAsync(content, {
+          plugins: [path.resolve(__dirname, './bebel-plugin-sign-graphql.js')],
         }).then(({ code }) => {
           if (argv.write) {
             fs.writeFile(file, code, 'utf8', err => err && console.error(err))
