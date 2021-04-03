@@ -70,7 +70,7 @@ const { verify } = require('jsonwebtoken')
 
 app.post('/graphql', (req, res) => {
   const query = verify(req.body.query, 'foo')
-  // => '\n  query getUsers {\n    name\n    email\n  }\n'
+  // => '\n  query getUsers {\n    id\n    name\n  }\n'
 })
 ```
 
