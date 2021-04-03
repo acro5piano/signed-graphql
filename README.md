@@ -84,6 +84,6 @@ Oridinally inspired by: https://itnext.io/graphql-data-hiding-using-apollo-stack
 
 # TODO
 
-- [ ] add unit test
+- [x] add unit test
 - [ ] show console help
-- [ ] decrypt for convenience
+- [ ] convert to plain for debug/convenience
