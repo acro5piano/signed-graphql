@@ -1,8 +1,8 @@
-[![npm version](https://badge.fury.io/js/graphql-encrypt.svg)](https://badge.fury.io/js/graphql-encrypt.svg)
+[![npm version](https://badge.fury.io/js/signed-graphql.svg)](https://badge.fury.io/js/signed-graphql.svg)
 
 # signed-graphql
 
-A cli tool to make GraphQL encrypted.
+A cli tool to make GraphQL secure. Make plain query into JWT signed query.
 
 # Why
 
@@ -24,36 +24,32 @@ yarn add -D signed-graphql
 
 # Usage
 
+### Step 1. Write GraphQL as usual
+
 Assume `example-query.js` looks like this:
 
 ```js
 export const getUsers = gql`
   query getUsers {
+    id
     name
-    email
   }
 `
 ```
 
-Run the following command to sign the gql:
+### Step 2. Sign GraphQL on build time
+
+Run the following command to sign the graphql queries:
 
 ```
-$ npm run graphql-encrypt --secret foo example-query.js
-
-export const getUsers = gql`eyJhbGciOiJIUzI1NiJ9.CiAgcXVlcnkgZ2V0VXNlcnMgewogICAgbmFtZQogICAgZW1haWwKICB9Cg.GRFoVNHpY12mX0UI1y_nCRwGqKST4UkAbx88hZ2Jccg`
-```
-
-to overwrite the file, add `--write` option:
-
-```
-$ npm run graphql-encrypt --secret foo --write example-query.js
+npm run signed-graphql --write --secret foo example-query.js
 ```
 
 Note: `--secret` is required args. Please keep it secret.
 
-# Next Step
+### Step 3. Verify your queries on runtime
 
-On the server side, decrypt the query. Node.js example:
+On the server side, verify the query. Node.js (express) example:
 
 ```js
 const { verify } = require('jsonwebtoken')
@@ -66,6 +62,21 @@ app.post('/graphql', (req, res) => {
   // => '\n  query getUsers {\n    name\n    email\n  }\n'
 })
 ```
+
+# Comparison with Persisted Queries
+
+There is a GraphQL technich called "Persisted Queries". The idea is to create pairs of a hash and a GraphQL query. The main purpose is to improve performance, because hashed string (32-64) is smaller than the actual GraphQL string.
+
+The downside of persisted queries are the lack of flexibility. It requires server side to know the pair of hash/query ahead of time before.
+
+On the other hand, signed-graphql keeps flexibility of front-end and server-side. Since JWT is stateless, we don't have to save anything (other than the JWT secret).
+
+The downside of signed-graphql is performance. You need to verify JWT on every request, which means there is some additional cost on the runtime.
+
+Referenece:
+
+- https://mercurius.dev/#/docs/persisted-queries
+- https://www.apollographql.com/docs/apollo-server/performance/apq/
 
 # Thanks
 
