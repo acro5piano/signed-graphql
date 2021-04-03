@@ -29,6 +29,8 @@ yarn add -D signed-graphql
 Assume `example-query.js` looks like this:
 
 ```js
+const gql = literals => literals[0]
+
 export const getUsers = gql`
   query getUsers {
     id
@@ -36,6 +38,8 @@ export const getUsers = gql`
   }
 `
 ```
+
+Note: do not use `graphql-tag`. Please use plain String.
 
 ### Step 2. Sign GraphQL on build time
 
