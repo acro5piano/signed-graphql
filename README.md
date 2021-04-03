@@ -6,9 +6,9 @@ A cli tool to make GraphQL secure. Make plain query into JWT signed query.
 
 # Why
 
-GraphQL is a great tool, but the query is open to public by default. Of course, we should set GraphQL server secure by server-side logic. However, we may not confortable if someone find a security hole and query it.
+GraphQL is a great tool, but the schema is open to public by default. Of course, we should set our GraphQL server secure by server-side logic. However, it is possible to create a security hole on GraphQL server and results in unexpected issues.
 
-With signed-graphql, we can verify that our queries is made by specific people, and accept only signed queries.
+With signed-graphql, we can verify queries are signed using shared JWT secret on runtime.
 
 # Install
 
