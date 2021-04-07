@@ -2,7 +2,7 @@
 
 # signed-graphql
 
-A cli tool to make GraphQL secure. Make plain query into JWT signed query.
+A cli tool to make GraphQL secure. Make a plain query into a JWT signed query.
 
 # Why
 
